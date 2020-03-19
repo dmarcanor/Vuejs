@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *, body, h1, h2, h3, p{
+            color: rgb(150,150,150) !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1 v-once>{{project}}</h1>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                project: "App",
+                
+            }
+        });
+    </script>
+</body>
+</html>
