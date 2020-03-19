@@ -14,7 +14,7 @@
 <body>
     <div id="app">
         <h1 v-once>{{this.project.toUpperCase()}} v{{version}}</h1>
-        <p>I'm {{name}} {{last_name}} and this is my very first time using Vue.js.</p>
+        <p>I'm {{name}} {{last_name}} and this is my very first time using Vue.js. I'm {{age}} years old.</p>
         <footer class="footer absolute bottom">
             <p v-text="project + 'v' + version"></p>
         </footer>
@@ -32,6 +32,11 @@
                     day: 13,
                     month: 12,
                     year: 1998
+                }
+            },
+            computed: {
+                age: function(){
+                    return 2020-this.birthdate.year;
                 }
             }
         });
