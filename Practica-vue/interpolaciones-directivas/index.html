@@ -5,24 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-        *, body, h1, h2, h3, p{
-            color: rgb(150,150,150) !important;
-        }
-
-        .footer{
-            border-top: solid black 1px;
-            width: 100vw;
-        }
-
-        .absolute{
-            position: absolute;
-        }
-
-        .bottom{
-            bottom: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app">
@@ -33,26 +16,6 @@
         </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script>
-        const app = new Vue({
-            el: "#app",
-            data: {
-                project: "App",
-                version: 0.1,
-                name: "Daniel",
-                last_name: "Marcano",
-                birthdate: {
-                    day: 13,
-                    month: 12,
-                    year: 1998
-                },
-            },
-            computed: {
-                age: function(){
-                    return 2020-this.birthdate.year;
-                }
-            }
-        });
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>

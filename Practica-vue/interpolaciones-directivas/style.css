@@ -1,0 +1,16 @@
+*, body, h1, h2, h3, p{
+    color: rgb(150,150,150) !important;
+}
+
+.footer{
+    border-top: solid black 1px;
+    width: 100vw;
+}
+
+.absolute{
+    position: absolute;
+}
+
+.bottom{
+    bottom: 0;
+}
