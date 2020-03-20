@@ -5,12 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Interpolaciones y directivas 2</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="">
+        <header v-once class="header">
+            <h1>{{ project.toUpperCase() }}</h1>
+        </header>
+
+        {{$data}}
+        <div id="info" class="center-text">
+            <h2>Información personal</h2>
+            <!-- Nombre -->
+            <label for="name">Nombre
+                <input type="text" name="name" id="name" v-model="name" value="">
+            </label>
+            <br>
+
+            <!-- Apellido -->
+            <label for="last_name">Apellido
+                <input type="text" name="last_name" id="last_name" v-model="last_name">
+            </label>
+            <br>
+            
+            <!-- Edad -->
+            <div id="age-info">
+                <label for="age">Edad
+                    <input type="number" name="age" id="age" v-model="age">
+                </label>
+                <template v-if="age < 0">
+                    <p>La edad debe ser mayor a 0</p>
+                </template>
+                <template v-else-if="age > 18">
+                    <p>Es mayor de edad</p>
+                </template>
+                <template v-else>
+                    <p>Es menor de edad</p>
+                </template>
+            </div>
+
+            <!-- Educacion -->
+            <div id="education-info">
+                <h3>¿Está usted estudiando?</h3>
+                <label for="studying">Si
+                    <input type="radio" name="studying" v-model="education.studying" :value="true">
+                </label>
+                <label for="studying">No
+                        <input type="radio" name="studying" v-model="education.studying" :value="false">
+                </label>
+
+                <div id="school-info" v-if="education.studying">
+                    <label for="level">Nivel
+                        <select name="level" id="level" v-model="education.level">
+                            <option v-bind:value="'elemental-school'">Primaria</option>
+                            <option :value="'high-school'">Secundaria</option>
+                            <option v-bind:value="'college'">Universidad</option>
+                        </select>
+                    </label>
+                    <br>
+
+                    <label for="school">{{education.level == "college" ? "Universidad" : "Escuela"}}
+                        <input type="text" name="school" id="school" v-model="education.school">
+                    </label>
+                </div>
+            </div>
+            
+        </div>
+
+        <footer v-once class="footer bottom">
+            {{ project }} v{{ version }}
+        </footer>
     </div>
     
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="app.js"></script>
 </body>
