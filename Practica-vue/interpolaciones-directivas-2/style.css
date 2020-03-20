@@ -2,15 +2,20 @@
     color: rgb(150,150,150) !important;
 }
 
+.header{
+    text-align: center;
+    border-bottom: solid black 1px;
+}
+
 .footer{
     border-top: solid black 1px;
     width: 100vw;
 }
 
-.absolute{
-    position: absolute;
-}
-
 .bottom{
     bottom: 0;
+}
+
+.center-text{
+    text-align: center;
 }
