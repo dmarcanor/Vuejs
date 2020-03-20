@@ -9,7 +9,8 @@ const app = new Vue({
         education: {
             studying: false,
             level: "",
-            school: ""
+            school: "",
+            experience: ""
         }
     }
 });
