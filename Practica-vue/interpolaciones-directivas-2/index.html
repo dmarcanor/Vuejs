@@ -67,12 +67,8 @@
 
                     <label v-show="education.school.length > 0" for="experience">Indique su experiencia en {{education.school}}<br>
                         <textarea v-model="education.experience" name="experience" id="experience" cols="30" rows="10"></textarea>
+                        <p v-if="this.experienceError != ''">{{this.experienceError}}</p>
                     </label>
-
-                    <div v-show="education.experience.length > 0" id="description">
-                        <p v-if="education.experience.length < 1000">La descripcion debe tener al menos 100 caracteres</p>
-                        <p v-else>La descripcion no puede pasar de 1000 caracteres</p>
-                    </div>
                 </div>
             </div>
             
