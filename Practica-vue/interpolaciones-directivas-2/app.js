@@ -12,5 +12,22 @@ const app = new Vue({
             school: "",
             experience: ""
         }
+    },
+    computed: {
+        experienceError: function() {
+            var exp = this.education.experience.trim();
+
+            if(exp == ''){
+                return "Este campo es obligatorio";
+            }
+
+            if(exp.length < 10){
+                return "Describa una experiencia mayor a 10 caracteres";
+            }
+
+            if(exp.length > 20){
+                return "Describa una experiencia menor a 20 caracteres";
+            }
+        }
     }
 });
