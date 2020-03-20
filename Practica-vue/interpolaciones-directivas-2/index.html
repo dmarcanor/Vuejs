@@ -35,15 +35,9 @@
                 <label for="age">Edad
                     <input type="number" name="age" id="age" v-model="age">
                 </label>
-                <template v-if="age < 0">
-                    <p>La edad debe ser mayor a 0</p>
-                </template>
-                <template v-else-if="age > 18">
-                    <p>Es mayor de edad</p>
-                </template>
-                <template v-else>
-                    <p>Es menor de edad</p>
-                </template>
+                <p v-if="age < 0">La edad no puede ser negativa</p>
+                <p v-else-if="age < 18">Es menor de edad</p>
+                <p v-else>Es mayor de edad</p>
             </div>
 
             <!-- Educacion -->
@@ -69,6 +63,16 @@
                     <label for="school">{{education.level == "college" ? "Universidad" : "Escuela"}}
                         <input type="text" name="school" id="school" v-model="education.school">
                     </label>
+                    <br>
+
+                    <label v-show="education.school.length > 0" for="experience">Indique su experiencia en {{education.school}}<br>
+                        <textarea v-model="education.experience" name="experience" id="experience" cols="30" rows="10"></textarea>
+                    </label>
+
+                    <div v-show="education.experience.length > 0" id="description">
+                        <p v-if="education.experience.length < 1000">La descripcion debe tener al menos 100 caracteres</p>
+                        <p v-else>La descripcion no puede pasar de 1000 caracteres</p>
+                    </div>
                 </div>
             </div>
             
