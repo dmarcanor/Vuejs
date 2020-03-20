@@ -1,0 +1,18 @@
+.header{
+    text-align: center;
+    border-bottom: solid black 1px;
+}
+
+.footer{
+    border-top: solid black 1px;
+    width: 100vw;
+    margin-top: 50px;
+}
+
+.bottom{
+    bottom: 0;
+}
+
+.center-text{
+    text-align: center;
+}

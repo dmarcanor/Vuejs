@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clases dinamicas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+<body>
+    <div id="app" class="">
+        <header v-once class="header">
+            <h1>{{ project.toUpperCase() }}</h1>
+        </header>
+        <!-- Fin de header -->
+
+
+        <div id="info" class="center-text">
+            <h2>Información personal</h2>
+            <!-- Nombre -->
+            <div id="name" class="form-check-inline" :class="name.trim() == '' ? 'has-danger' : 'has-success'">
+                <label class="form-control-label">Nombre
+                    <input type="text" v-model="name" class="form-control" >
+                </label>
+            </div>
+            
+
+            <!-- Apellido -->
+            <div id="last_name" :class="{'form-check-inline': true, 'has-danger': this.last_nameError, 'has-success': !this.last_nameError}">
+                <label class="form-control-label">Apellido
+                    <input type="text" class="form-control" v-model="last_name">
+                </label>
+            </div>
+            
+            
+            <!-- Edad -->
+            <div id="age" :class="this.ageErrorClasses">
+                <label class="form-control-label">Edad
+                    <input type="number" class="form-control" v-model="age">
+                </label>
+                <p v-if="age < 0">La edad no puede ser negativa</p>
+                <p v-else-if="age < 18">Es menor de edad</p>
+                <p v-else>Es mayor de edad</p>
+            </div>
+
+            <!-- Educacion -->
+            <div id="education-info">
+                <h3>¿Está usted estudiando?</h3>
+                <label class="form-control-label">Si
+                    <input type="radio" name="studying" class="form-control" v-model="education.studying" :value="true">
+                </label>
+                <label class="form-control-label">No
+                    <input type="radio" name="studying" class="form-control" v-model="education.studying" :value="false">
+                </label>
+
+                <div id="school-info" v-if="education.studying">
+                    <label class="form-control-label">Nivel
+                        <select class="form-control" v-model="education.level">
+                            <option v-bind:value="'elemental-school'">Primaria</option>
+                            <option :value="'high-school'">Secundaria</option>
+                            <option v-bind:value="'college'">Universidad</option>
+                        </select>
+                    </label>
+                    <br>
+
+                    <label class="form-control-label">{{education.level == "college" ? "Universidad" : "Escuela"}}
+                        <input type="text" name="school" id="school" v-model="education.school">
+                    </label>
+                    <br>
+                    <div v-if="education.school != ''" :class="{'form-group': true, 'has-danger': this.experienceError, 'has-success': !this.experienceError}">
+                        <label v-show="education.school.length > 0" class="form-control-label" for="experience">Indique su experiencia en {{education.school}}<br>
+                            <textarea v-model="education.experience" class="form-control" name="experience" id="experience" cols="30" rows="10"></textarea>
+                            <p v-if="this.experienceError != ''" class="help-block">{{this.experienceError}}</p>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fin de div.info -->
+
+        <footer v-once class="footer bottom">
+            {{ project }} v{{ version }}
+        </footer>
+    </div>
+    
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
