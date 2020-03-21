@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>V-for</title>
+    <title>Eventos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -16,11 +16,69 @@
         <!-- Fin de header -->
 
         <div id="main" class="container mt-3">
-            
+            <div class="row mt-3">
+                <div class="col">
+                    <template v-if="menu.length">
+                        <h3>Menu</h3>
+                        <ul>
+                            <li v-for="item in menu" v-on:click="addOrder(item)">Nombre: <a>{{item.foodName}}</a> / Precio: {{item.price}}</li>
+                        </ul>
+                    </template>
+                </div>
+
+                <div class="col">
+                    <h3>Agregar item al menu</h3>
+                    <form id="menu" @submit.prevent="createFood">
+                        <div class="form-group">
+                            <label for="" class="form-control-label">Nombre
+                                 <input type="text" class="form-control" v-model="menu.foodName" placeholder="Nombre de la comida">
+                            </label>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="" class="form-control-label">Precio
+                                <input type="number" class="form-control" v-model="menu.price" placeholder="Precio">
+                            </label>
+                        </div>
+                        <button class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+
+                <div class="col-12">
+                    <p><small>Dé click sobre el nombre de un item para añadirlo a la orden. Más de un click aumenta la cantidad de ese item a la orden</small></p>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col">
+                    <h2>Orden</h2>
+                    <table class="table table-bordered">
+                        <thead>
+                            <th>Nombre</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                        </thead>
+                        <tbody>
+                            <tr v-for="item in this.order.food">
+                                <td>{{item.foodName}}</td>
+                                <td>{{item.quantity}}</td>
+                                <td>{{item.price * item.quantity}}</td>
+                            </tr>
+                            <tr>
+                                <td>Total a pagar</td>
+                                <td>{{this.getTotal()}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn btn-success" @click.prevent="submitOrder()">Ordenar</button>
+                </div>
+            </div>
         </div>
         <!-- Fin e div.main -->
 
-        <footer class="footer bottom">
+        <footer class="footer sticky bottom">
             {{project}} v{{version}}
         </footer>
         <!-- Fin de footer -->
