@@ -30,13 +30,13 @@
                 </ul>
             </div>
 
-            <div id="objets">
-                <h2>Objetos con v-for</h2>
-                <h4 class="center-text">{{soccerTeam.name}}</h4>
+            <div id="objets" class="text-center">
+                <h2 class="text-left">Objetos con v-for</h2>
+                <h4>{{soccerTeam.name}}</h4>
 
                 <div id="manager" v-if="soccerTeam.manager">
                     <h5>Director Tecnico</h5>
-                    <table class="table center-text">
+                    <table class="table">
                         <thead class="bg-red">
                             <tr>
                                 <td>Nombre</td>
@@ -53,7 +53,7 @@
                 
                 <div id="players" v-if="soccerTeam.players.length">
                     <h5>Jugadores</h5>
-                    <table class="table center-text">
+                    <table class="table">
                         <thead class="bg-red">
                             <tr>
                                 <td>Nombre</td>
