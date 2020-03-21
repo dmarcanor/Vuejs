@@ -26,7 +26,7 @@
             <div id="arrays">
                 <h2>Arreglos con v-for</h2>
                 <ul>
-                    <li v-for="tech in technologies" v-if="technologies.length">{{tech}}</li>
+                    <li v-for="(tech, index) in technologies" v-if="technologies.length">Index: {{index}} - {{tech}}</li>
                 </ul>
             </div>
 
@@ -45,7 +45,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td v-for="(value, key, index) in soccerTeam.manager">Key: {{key}}, Index: {{index}} - {{value.toUpperCase()}}</td>
+                                <td v-for="(value, key, index) in soccerTeam.manager">Key: {{key}} - {{value.toUpperCase()}}</td>
                             </tr>
                         </tbody>
                     </table>
