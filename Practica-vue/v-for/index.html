@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>V-for</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <h1>{{project.toUpperCase()}}</h1>
+        </header>
+        <!-- Fin de header -->
+
+        <div id="main" class="container">
+            <div id="numbers">
+                <h2>Numeros con v-for</h2>
+                <ul>
+                    <li v-for="i in 10">{{ i }}</li>
+                </ul>
+            </div>
+
+            <div id="arrays">
+                <h2>Arreglos con v-for</h2>
+                <ul>
+                    <li v-for="tech in technologies" v-if="technologies.length">{{tech}}</li>
+                </ul>
+            </div>
+
+            <div id="objets">
+                <h2>Objetos con v-for</h2>
+                <h4 class="center-text">{{soccerTeam.name}}</h4>
+
+                <div id="manager" v-if="soccerTeam.manager">
+                    <h5>Director Tecnico</h5>
+                    <table class="table center-text">
+                        <thead class="bg-red">
+                            <tr>
+                                <td>Nombre</td>
+                                <td>Apellido</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td v-for="(value, key, index) in soccerTeam.manager">Key: {{key}}, Index: {{index}} - {{value.toUpperCase()}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div id="players" v-if="soccerTeam.players.length">
+                    <h5>Jugadores</h5>
+                    <table class="table center-text">
+                        <thead class="bg-red">
+                            <tr>
+                                <td>Nombre</td>
+                                <td>Numero</td>
+                                <td>Posicion</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template v-for="item in soccerTeam.players">
+                                <tr>
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.number}}</td>
+                                    <td>{{item.position}}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Fin de div.main -->
+
+        <footer class="footer sticky bottom">{{project}} v{{version}}</footer>
+        <!-- Fin de footer -->
+
+    </div>
+    <!-- Fin de div.app -->
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
