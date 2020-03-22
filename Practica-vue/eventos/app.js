@@ -31,7 +31,14 @@ const app = new Vue({
                     foodName: this.menu.foodName,
                     price: this.menu.price
                 }
-            );
+            )
+            this.clearForm()
+        },
+
+        clearForm: function() {
+            this.menu.foodName = ""
+            this.menu.price = 0
+            console.log("clear")
         },
 
         addOrder: function(item){
