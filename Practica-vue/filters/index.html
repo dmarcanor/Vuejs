@@ -17,8 +17,27 @@
 
         <div id="main" class="container mt-3">
             <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <h2>Datos personales</h2>
+                </div>
+            </div>
+            <form action="">
+                <div class="form-group">
+                    <label class="form-control-label">Titulo
+                        <input type="text" v-model="title">
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label">Nombre
+                        <input type="text" v-model="name">
+                    </label>
+                </div>
+            </form>
+
+            <div class="row mt-3">
                 <div class="col">
-                    
+                    <h3>{{name | upper | title(this.title)}}</h3>
                 </div>
             </div>
         </div>
