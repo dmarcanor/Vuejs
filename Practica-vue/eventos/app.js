@@ -38,7 +38,6 @@ const app = new Vue({
         clearForm: function() {
             this.menu.foodName = ""
             this.menu.price = 0
-            console.log("clear")
         },
 
         addOrder: function(item){
