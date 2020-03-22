@@ -71,11 +71,8 @@ const app = new Vue({
             this.setOrderAsEmpty()
         },
 
-        //MEJORAR
         setOrderAsEmpty: function(){
-            for(var i=0; i<=app.order.food.length+1; i++){
-                app.order.food.pop()
-            }
+            return this.order.food = []
         }
     }
 });
