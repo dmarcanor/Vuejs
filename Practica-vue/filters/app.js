@@ -1,3 +1,7 @@
+Vue.filter('title', function(value, title){
+    return title + value
+});
+
 const app = new Vue({
     el: "#app",
     data: {
@@ -9,9 +13,6 @@ const app = new Vue({
     filters: {
         upper: function(value) {
             return value.toUpperCase()
-        },
-        title: function(value, title){
-            return title + '.' + value
         }
     }
 });
