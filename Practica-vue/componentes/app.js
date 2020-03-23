@@ -3,5 +3,5 @@ const app = new Vue({
     data: {
         project: "Project",
         version: 0.1,
-    },
+    }
 });
