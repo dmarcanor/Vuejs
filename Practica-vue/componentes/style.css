@@ -3,17 +3,12 @@
     border-bottom: solid black 1px;
 }
 
+span.d-inline-block p{
+    display: inherit;
+}
+
 .footer{
     border-top: solid black 1px;
     width: 100vw;
     margin-top: 50px;
-}
-
-.sticky{
-    position: sticky;
-    background: white;
-}
-
-.bottom{
-    bottom: 0;
 }
