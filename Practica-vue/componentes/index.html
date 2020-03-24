@@ -4,49 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Filters</title>
+    <title>Componentes</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app">
-        <header class="header">
-            <h1>{{project.toUpperCase()}}</h1>
-        </header>
-        <!-- Fin de header -->
+        <app-header :project="project"></app-header>
 
         <div id="main" class="container mt-3">
-            <h2 class="text-center">Contactos</h2>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <span class="contact-img">
-                        <img src="" alt="contact-img">
-                    </span>
+            <div class="row mt-3">
+                <app-menu :menu="menu" :order="order"></app-menu>
+                <add-item :menu="menu"></add-item>
+                <instructions></instructions>
+            </div>
 
-                    <span class="contact-info d-inline-block">
-                        <p>Nombres y apellidos</p>
-                        <p>Numero de celular</p>
-                    </span>
+            <hr>
 
-                    <span class="options">
-                        <a href="" class="edit">
-                            <img src="" alt="edit">
-                        </a>
-
-                        <a href="" class="delete">
-                            <img src="" alt="delete">
-                        </a>
-                    </span>
-                </li>
-            </ul>
+            <order :order="order"></order>
         </div>
-            
-        
-        <!-- Fin de div.main -->
+        <!-- Fin e div.main -->
 
-        <footer class="footer fixed-bottom">
-            {{project}} v{{version}}
-        </footer>
+       <app-footer :project="project" :version="version"></app-footer>
         <!-- Fin de footer -->
     </div>
     <!-- Fin de div.app -->
