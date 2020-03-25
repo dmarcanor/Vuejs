@@ -22,7 +22,7 @@
 export default{
     props: ['menu'],
     methods: {
-        createFood: function() {
+        createFood() {
             this.menu.push(
                 {
                     foodName: this.menu.foodName,
@@ -32,7 +32,7 @@ export default{
             this.clearForm()
         },
     
-        clearForm: function() {
+        clearForm() {
             this.menu.foodName = ""
             this.menu.price = ""
         }

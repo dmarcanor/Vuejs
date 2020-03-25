@@ -3,7 +3,7 @@
         <template v-if="menu.length">
             <h3>Menu</h3>
             <ul>
-                <li is="menu-item" :item="item" v-for="item in menu" @add="$emit('add-2', item)"></li>
+                <menu-item :item="item" v-for="item in menu" @select="$emit('selected', item)"></menu-item>
             </ul>
         </template>
     </div>

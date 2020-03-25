@@ -23,7 +23,7 @@ export default{
     },
     props: ['order'],
     methods: {
-        getTotal: function(){
+        getTotal(){
             var total=0
     
             this.order.food.forEach(element => {

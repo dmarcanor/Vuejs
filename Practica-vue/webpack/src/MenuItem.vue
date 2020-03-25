@@ -1,5 +1,5 @@
 <template>
-    <li v-on:click="add(item)">
+    <li v-on:click="select(item)">
         Nombre: <a>{{item.foodName}}</a> / Precio: {{item.price}}
     </li>
 </template>
@@ -8,8 +8,8 @@
 export default{
     props: ['item'],
     methods: {
-        add: function(item){
-            this.$emit('add', item)
+        select: function(item){
+            this.$emit('select', item)
         }
     }
 }

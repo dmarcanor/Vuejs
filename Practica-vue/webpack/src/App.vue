@@ -7,7 +7,7 @@
 
       <div id="main" class="container mt-3">
           <div class="row mt-3">
-              <app-menu :menu="menu" @add-2="addOrder"></app-menu>
+              <app-menu :menu="menu" @selected="addOrder"></app-menu>
               <add-menu-item :menu="menu"></add-menu-item>
               <instructions></instructions>
           </div>
@@ -71,7 +71,7 @@ export default {
     }
   },
   methods: {
-        addOrder: function(item){
+        addOrder(item){
             var obj = {
                 foodName: item.foodName,
                 price: item.price,
@@ -85,19 +85,19 @@ export default {
             this.order.food.push(obj)
         },
     
-        getItemRepeated: function(item){
+        getItemRepeated(item){
             return this.order.food.find(element => element.foodName === item.foodName);
         },
     
-        isItemRepeated: function(item){
+        isItemRepeated(item){
             return this.order.food.find(element => element.foodName === item.foodName) != null ? true : false;
         },
-        submitOrder: function(){
+        submitOrder(){
             alert("Orden enviada")
             this.setOrderAsEmpty()
         },
     
-        setOrderAsEmpty: function(){
+        setOrderAsEmpty(){
             return this.order.food = []
         }
     }
