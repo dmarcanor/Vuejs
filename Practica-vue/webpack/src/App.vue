@@ -1,60 +1,106 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+      <header class="header">
+          <h1>{{project.toUpperCase()}}</h1>
+      </header>
+      <!-- Fin de header -->
+
+      <div id="main" class="container mt-3">
+          <div class="row mt-3">
+              <app-menu :menu="menu" @add-2="addOrder"></app-menu>
+              <add-menu-item :menu="menu"></add-menu-item>
+              <instructions></instructions>
+          </div>
+
+          <hr>
+
+          <div class="row">
+              <div class="col">
+                  <h2>Orden</h2>
+                  <order-table :order="order"></order-table>
+                  <button class="btn btn-success" @click.prevent="submitOrder()">Ordenar</button>
+              </div>
+          </div>
+      </div>
+      <!-- Fin e div.main -->
+
+      <footer class="footer sticky bottom">
+          {{project}} v{{version}}
+      </footer>
+      <!-- Fin de footer -->
   </div>
+  <!-- Fin de div.main -->
 </template>
 
 <script>
+import AppMenu from './AppMenu.vue'
+import AddMenuItem from './AddMenuItem.vue'
+import Instructions from './Instructions.vue'
+import OrderTable from './OrderTable.vue'
+
 export default {
+  components: {
+    'app-menu': AppMenu,
+    'add-menu-item': AddMenuItem,
+    'instructions': Instructions,
+    'order-table': OrderTable
+  },
   name: 'app',
-  data () {
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      project: "Restaurant",
+        version: 3.0,
+        menu: [
+            {
+                foodName: "Pollo",
+                price: 100000
+            },
+            {
+                foodName: "Pizza",
+                price: 120000
+            },
+            {
+                foodName: "Ensalada",
+                price: 80000
+            }
+        ],
+        order: {
+            food: [],
+            total: 0
+        }
     }
-  }
+  },
+  methods: {
+        addOrder: function(item){
+            var obj = {
+                foodName: item.foodName,
+                price: item.price,
+                quantity: 1
+            }
+    
+            if(this.isItemRepeated(item)){
+                return this.getItemRepeated(item).quantity++;
+            }
+    
+            this.order.food.push(obj)
+        },
+    
+        getItemRepeated: function(item){
+            return this.order.food.find(element => element.foodName === item.foodName);
+        },
+    
+        isItemRepeated: function(item){
+            return this.order.food.find(element => element.foodName === item.foodName) != null ? true : false;
+        },
+        submitOrder: function(){
+            alert("Orden enviada")
+            this.setOrderAsEmpty()
+        },
+    
+        setOrderAsEmpty: function(){
+            return this.order.food = []
+        }
+    }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
