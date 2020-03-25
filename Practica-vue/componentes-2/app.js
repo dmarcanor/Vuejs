@@ -166,16 +166,6 @@ const app = new Vue({
     
         setOrderAsEmpty: function(){
             return this.order.food = []
-        },
-
-        getTotal: function(){
-            var total=0
-    
-            this.order.food.forEach(element => {
-                total += (element.price * element.quantity)
-            });
-    
-            return total;
         }
     }
 });
