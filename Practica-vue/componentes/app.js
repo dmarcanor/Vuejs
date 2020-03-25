@@ -157,7 +157,7 @@ const app = new Vue({
     el: "#app",
     data: {
         project: "Restaurant",
-        version: 0.1,
+        version: 1.0,
 
         menu: [
             {
