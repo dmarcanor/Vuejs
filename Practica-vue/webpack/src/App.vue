@@ -9,13 +9,13 @@
           <div class="row mt-3">
               <div class="col">
                   <h3>Menu</h3>
-                  <app-menu :menu="menu" @selected="addOrder"></app-menu>
+                  <menu-list :menu="menu" @selected="addOrder"></menu-list>
               </div>
               <div class="col">
                   <add-menu-item :menu="menu" @add="addMenuItem"></add-menu-item>
               </div>
               
-              <instructions></instructions>
+              <instructions>Dé click sobre el nombre de un item para añadirlo a la orden. Más de un click aumenta la cantidad de ese item a la orden</instructions>
           </div>
 
           <hr>
@@ -26,6 +26,7 @@
                   <order-table :order="order" :total="orderTotal"></order-table>
                   <button class="btn btn-success" @click.prevent="submitOrder()">Ordenar</button>
               </div>
+              <instructions>Dé click sobre el nombre de un item para eliminarla de la orden o reducir la cantidad pedida</instructions>
           </div>
       </div>
       <!-- Fin e div.main -->
@@ -39,14 +40,14 @@
 </template>
 
 <script>
-import AppMenu from './AppMenu.vue'
-import AddMenuItem from './AddMenuItem.vue'
-import Instructions from './Instructions.vue'
-import OrderTable from './OrderTable.vue'
+import MenuList from './Components/Menu/MenuList.vue'
+import AddMenuItem from './Components/Menu/AddMenuItem.vue'
+import Instructions from './Components/Common//Instructions.vue'
+import OrderTable from './Components/Order//OrderTable.vue'
 
 export default {
   components: {
-    'app-menu': AppMenu,
+    'menu-list': MenuList,
     'add-menu-item': AddMenuItem,
     'instructions': Instructions,
     'order-table': OrderTable
