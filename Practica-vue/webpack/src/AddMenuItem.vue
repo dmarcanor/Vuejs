@@ -1,16 +1,16 @@
 <template>
     <div class="col">
         <h3>Agregar item al menu</h3>
-        <form id="menu" @submit.prevent="createFood">
+        <form id="menu" @submit.prevent="create">
             <div class="form-group">
                 <label for="" class="form-control-label">Nombre
-                    <input type="text" class="form-control" v-model="menu.foodName" placeholder="Nombre de la comida">
+                    <input type="text" class="form-control" v-model="foodName" placeholder="Nombre de la comida">
                 </label>
             </div>
         
             <div class="form-group">
                 <label for="" class="form-control-label">Precio
-                    <input type="number" class="form-control" v-model="menu.price" placeholder="Precio">
+                    <input type="number" class="form-control" v-model="price" placeholder="Precio">
                 </label>
             </div>
             <button class="btn btn-primary">Enviar</button>
@@ -20,21 +20,24 @@
 
 <script>
 export default{
-    props: ['menu'],
+    data() {
+        return {
+            foodName: "",
+            price: ""
+        }
+    },
     methods: {
-        createFood() {
-            this.menu.push(
-                {
-                    foodName: this.menu.foodName,
-                    price: this.menu.price
-                }
-            )
+        create() {
+            this.$emit('add', {
+                foodName: this.foodName,
+                price: this.price
+            })
             this.clearForm()
         },
     
         clearForm() {
-            this.menu.foodName = ""
-            this.menu.price = ""
+            this.foodName = "",
+            this.price= ""
         }
     }
 }

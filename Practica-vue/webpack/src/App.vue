@@ -7,8 +7,14 @@
 
       <div id="main" class="container mt-3">
           <div class="row mt-3">
-              <app-menu :menu="menu" @selected="addOrder"></app-menu>
-              <add-menu-item :menu="menu"></add-menu-item>
+              <div class="col">
+                  <h3>Menu</h3>
+                  <app-menu :menu="menu" @selected="addOrder"></app-menu>
+              </div>
+              <div class="col">
+                  <add-menu-item :menu="menu" @add="addMenuItem"></add-menu-item>
+              </div>
+              
               <instructions></instructions>
           </div>
 
@@ -17,7 +23,7 @@
           <div class="row">
               <div class="col">
                   <h2>Orden</h2>
-                  <order-table :order="order"></order-table>
+                  <order-table :order="order" :total="orderTotal"></order-table>
                   <button class="btn btn-success" @click.prevent="submitOrder()">Ordenar</button>
               </div>
           </div>
@@ -47,8 +53,8 @@ export default {
   },
   name: 'app',
   data() {
-    return {
-      project: "Restaurant",
+      return {
+        project: "Restaurant",
         version: 3.0,
         menu: [
             {
@@ -65,40 +71,41 @@ export default {
             }
         ],
         order: {
-            food: [],
-            total: 0
+            food: []
         }
     }
   },
+  computed: {
+      orderTotal() {
+          var result=0
+          this.order.food.forEach(element => result += (element.price * element.quantity))
+          return result
+      }
+  },
   methods: {
-        addOrder(item){
-            var obj = {
-                foodName: item.foodName,
-                price: item.price,
-                quantity: 1
-            }
-    
-            if(this.isItemRepeated(item)){
-                return this.getItemRepeated(item).quantity++;
-            }
-    
-            this.order.food.push(obj)
+        getObjectFrom(item) {
+            return {foodName: item.foodName, price: item.price, quantity: 1}
         },
     
         getItemRepeated(item){
             return this.order.food.find(element => element.foodName === item.foodName);
         },
-    
-        isItemRepeated(item){
-            return this.order.food.find(element => element.foodName === item.foodName) != null ? true : false;
+
+        addMenuItem(item){
+          this.menu.push(item)
         },
+
+        addOrder(item){
+            if(this.getItemRepeated(item)){
+                return this.getItemRepeated(item).quantity++;
+            }
+    
+            this.order.food.push(this.getObjectFrom(item))
+        },
+
         submitOrder(){
             alert("Orden enviada")
-            this.setOrderAsEmpty()
-        },
-    
-        setOrderAsEmpty(){
-            return this.order.food = []
+            this.order.food = []
         }
     }
 }

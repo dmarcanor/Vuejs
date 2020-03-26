@@ -1,12 +1,8 @@
 <template>
-    <div class="col">
-        <template v-if="menu.length">
-            <h3>Menu</h3>
-            <ul>
-                <menu-item :item="item" v-for="item in menu" @select="$emit('selected', item)"></menu-item>
-            </ul>
-        </template>
-    </div>
+    <ul>
+        <menu-item v-for="item in menu" :item="item"  @select="$emit('selected', item)"></menu-item>
+    </ul>
+
 </template>
 
 <script>
