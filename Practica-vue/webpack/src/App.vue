@@ -39,10 +39,10 @@
 </template>
 
 <script>
-import AppMenu from './AppMenu.vue'
-import AddMenuItem from './AddMenuItem.vue'
-import Instructions from './Instructions.vue'
-import OrderTable from './OrderTable.vue'
+import AppMenu from './MenuComponents/AppMenu.vue'
+import AddMenuItem from './MenuComponents/AddMenuItem.vue'
+import Instructions from './CommonComponents/Instructions'
+import OrderTable from './OrderComponents/OrderTable'
 
 export default {
   components: {
