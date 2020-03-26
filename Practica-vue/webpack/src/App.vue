@@ -111,3 +111,24 @@ export default {
 }
 </script>
 
+<style>
+    .header{
+        text-align: center;
+        border-bottom: solid black 1px;
+    }
+
+    .footer{
+        border-top: solid black 1px;
+        width: 100vw;
+        margin-top: 50px;
+    }
+
+    .sticky{
+        position: sticky;
+        background: white;
+    }
+
+    .bottom{
+        bottom: 0;
+    }
+</style>
