@@ -6,7 +6,7 @@
             <th>Precio</th>
         </thead>
         <tbody>
-            <tr is="order-item" v-for="item in order.food" :item="item"></tr>
+            <order-item v-for="item in food" :item="item"></order-item>
             <tr>
                 <td>Total a pagar</td>
                 <td>{{total}}</td>
@@ -17,19 +17,12 @@
 
 <script>
 import OrderItem from './OrderItem'
+
 export default{
     components: {
         'order-item': OrderItem
     },
-    props: ['order', 'total'],
-    methods: {
-        getTotal(){
-            var total=0
-    
-            this.order.food.forEach(element => this.order.total += (element.price * element.quantity))
-    
-            return this.order.total;
-        }
-    }
+
+    props: ['food', 'total'],
 }
 </script>

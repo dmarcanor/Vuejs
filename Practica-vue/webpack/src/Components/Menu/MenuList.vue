@@ -1,16 +1,17 @@
 <template>
     <ul>
-        <menu-item v-for="item in menu" :item="item"  @select="$emit('selected', item)"></menu-item>
+        <menu-item v-for="item of menu" :item="item" @selected="$emit('select', item)"></menu-item>
     </ul>
-
 </template>
-
+    
 <script>
 import MenuItem from './MenuItem.vue'
+    
 export default{
+    props: ['menu'],
+    
     components: {
         'menu-item': MenuItem
-    },
-    props: ['menu']
+    }
 }
 </script>
