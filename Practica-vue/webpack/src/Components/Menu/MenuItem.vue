@@ -1,6 +1,6 @@
 <template>
-    <li v-on:click="select(item)">
-        Nombre: <a>{{item.foodName}}</a> / Precio: {{item.price}}
+    <li v-on:click="$emit('selected', item)">
+        Nombre: {{this.item.foodName}} / Precio: {{this.item.price}}
     </li>
 </template>
 
