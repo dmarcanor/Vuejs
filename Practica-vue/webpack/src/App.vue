@@ -34,7 +34,9 @@ export default {
     'app-order': Order,
     'instructions': instructions
   },
+  
   name: 'app',
+
   data() {
       return {
         project: "Restaurant",

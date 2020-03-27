@@ -2,7 +2,7 @@
     <div class="row mt-3">
         <div class="col">
             <h3>Menu</h3>
-            <menu-list :menu="menu" @select="addOrder"></menu-list>
+            <menu-list :menu="this.menu" @select="addOrder"></menu-list>
         </div>
         <div class="col">
             <add-menu-item :menu="menu" @add="addMenuItem"></add-menu-item>
@@ -12,7 +12,7 @@
 
 <script>
     import bus from '../Common/EventBus'
-    import MenuList from './MenuItem'
+    import MenuList from './MenuList'
     import AddMenuItem from './AddMenuItem'
     import Instructions from './../Common/Instructions'
     
@@ -38,38 +38,35 @@
                         foodName: "Ensalada",
                         price: 80000
                     }
-                ]
+                ],
+
+                food: []
             }
         },
 
-        /*created() {
-            bus.$on('sendOrder', function(event) {
-
-            })
-        },*/
+        created() {
+            bus.$on('sendOrder', (e) => this.food = e)
+        },
 
         methods: {
             getObjectFrom(item) {
                 return {foodName: item.foodName, price: item.price, quantity: 1}
             },
         
-            getItemRepeated(item){
-                return this.order.food.find(element => element.foodName === item.foodName);
+            getItemRepeated(item, order){
+                return this.food.find(element => element.foodName === item.foodName);
             },
 
             addMenuItem(item){
                 this.menu.push(item)
             },
 
-            addOrder(item){
-                var temp = bus.$on('sendOrder')
-                console.log(temp)
-                /*if(this.getItemRepeated(item)){
+            addOrder(item){    
+                if(this.getItemRepeated(item)){
                     return this.getItemRepeated(item).quantity++;
                 }
                 
-                bus.$emit('addItemInOrder', this.getObjectFrom(item))*/
-                //this.order.food.push(this.getObjectFrom(item))
+                this.food.push(this.getObjectFrom(item))
             }
         }
     }

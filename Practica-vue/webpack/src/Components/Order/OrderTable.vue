@@ -6,7 +6,7 @@
             <th>Precio</th>
         </thead>
         <tbody>
-            <order-item v-for="item in order.food" :item="item"></order-item>
+            <order-item v-for="item in food" :item="item"></order-item>
             <tr>
                 <td>Total a pagar</td>
                 <td>{{total}}</td>
@@ -23,6 +23,6 @@ export default{
         'order-item': OrderItem
     },
 
-    props: ['order', 'total'],
+    props: ['food', 'total'],
 }
 </script>
