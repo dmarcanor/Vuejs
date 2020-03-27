@@ -35,8 +35,12 @@ export default {
         bus.$emit('sendOrder', this.food)
     },
 
+    updated() {
+        bus.$emit('sendOrder', this.food)
+    },
+
     methods: {
-        submitOrder(){
+        submitOrder() {
             alert("Orden enviada")
             this.food = []
         }
