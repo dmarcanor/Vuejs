@@ -1,9 +1,5 @@
 <template>
     <div>
-        <ul class="nav nav-bar">
-            <router-link tag="li" to="/" active-class="active"><a>Mesas</a></router-link>
-        </ul>
-        
         <menu-app></menu-app>
         <order-app></order-app>
     </div>
