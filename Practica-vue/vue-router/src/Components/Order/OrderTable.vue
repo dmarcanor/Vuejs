@@ -7,11 +7,11 @@
         </thead>
         <tbody>
             <order-item v-for="item in food" :item="item"></order-item>
-            <tr>
-                <td>Total a pagar</td>
-                <td>{{total}}</td>
-            </tr>
         </tbody>
+        <tfoot style="font-weight: bold">
+            <td>Total a pagar</td>
+            <td>{{total}}</td>
+        </tfoot>
     </table>
 </template>
 
