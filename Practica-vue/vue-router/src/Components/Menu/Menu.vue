@@ -2,7 +2,7 @@
     <div class="row mt-3">
         <div class="col">
             <h2>Menu</h2>
-            <menu-list :menu="this.menu" @select="addOrder"></menu-list>
+            <menu-list :menu="menu" @select="addOrder"></menu-list>
         </div>
         <div class="col">
             <add-menu-item :menu="menu" @add="addMenuItem"></add-menu-item>
