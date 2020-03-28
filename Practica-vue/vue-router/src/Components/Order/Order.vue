@@ -3,7 +3,7 @@
         <div class="col">
             <h2>Orden</h2>
             <order-table :food="food" :total="total"></order-table>
-            <router-link to="/mesa"><button class="btn btn-success">Ordenar</button></router-link>
+            <button class="btn btn-success" @click="submitOrder(); $router.push('/mesa')">Ordenar</button>
         </div>
     </div>
 </template>
@@ -37,6 +37,12 @@ export default {
 
     updated() {
         bus.$emit('sendOrder', this.food)
+    },
+
+    methods: {
+        submitOrder() {
+            this.food = []
+        }
     }
 }
 </script>

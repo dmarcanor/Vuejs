@@ -14,7 +14,6 @@ export default {
     components: {
         'order-app': Order,
         'menu-app': Menu
-    },
-    prop: ['id']
+    }
 }
 </script>

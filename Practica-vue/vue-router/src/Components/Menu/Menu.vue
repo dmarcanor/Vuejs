@@ -19,7 +19,7 @@
     import bus from '../Common/EventBus'
     import MenuList from './MenuList'
     import AddMenuItem from './AddMenuItem'
-    import Instructions from './../Common/Instructions'
+    import Instructions from '../Common/Instructions'
     
     export default{
         components: {
