@@ -1,20 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Menu from '../Menu/Menu'
+import OrderMenu from '../Handlers/OrderMenu'
 import Order from '../Order/Order'
+import Tables from '../Tables/Tables'
 
 Vue.use(Router)
 
 var router = new Router({
 	routes: [
 		{
-			path: '/order',
-			component: Order
+			path: '/',
+			component: Tables
 		},
 
 		{
-			path: '/menu',
-			component: Menu
+			path: '/:id/order',
+			component: OrderMenu,
+			props: true
 		}
 	]
 });
