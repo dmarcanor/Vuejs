@@ -15,6 +15,7 @@
 </template>
 
 <script>
+    import MenuArray from '../../Store/menu'
     import bus from '../Common/EventBus'
     import MenuList from './MenuList'
     import AddMenuItem from './AddMenuItem'
@@ -29,21 +30,7 @@
 
         data() {
             return {
-                menu: [
-                    {
-                        foodName: "Pollo",
-                        price: 100000
-                    },
-                    {
-                        foodName: "Pizza",
-                        price: 120000
-                    },
-                    {
-                        foodName: "Ensalada",
-                        price: 80000
-                    }
-                ],
-
+                menu: MenuArray.state.menu,
                 food: []
             }
         },
