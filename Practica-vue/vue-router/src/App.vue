@@ -5,15 +5,9 @@
       </header>
 
       <div id="main" class="container mt-3">
-		<ul class="nav nav-tabs">
-			<router-link tag="li" to="/order" active-class="active"><a>Ordenes</a></router-link>
-			<router-link tag="li" to="/menu" active-class="active"><a>Menu</a></router-link>  
-		</ul>
-
-		<keep-alive>
-			<router-view></router-view>
-		</keep-alive>
-
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
       </div>
 
       <footer class="footer sticky bottom">
