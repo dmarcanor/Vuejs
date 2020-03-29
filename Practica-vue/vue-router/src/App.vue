@@ -5,9 +5,10 @@
       </header>
 
       <div id="main" class="container mt-3">
-        <keep-alive>
+        
+          <router-view name="menu"></router-view>
           <router-view></router-view>
-        </keep-alive>
+        
       </div>
 
       <footer class="footer sticky bottom">

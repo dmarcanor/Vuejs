@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import OrderView from '../Views/OrderView'
+import Order from '../Order/Order'
+import Menu from '../Menu/Menu'
 import Tables from '../Tables/Tables'
-import Success from '../Order/Success'
-import Fail from '../Order/Fail'
+import Success from '../Views/Success'
+import Fail from '../Views/Fail'
 import Error404 from '../Errors/404'
 
 Vue.use(Router)
@@ -13,7 +14,10 @@ var router = new Router({
 	routes: [
 		{
 			path: '/',
-			component: OrderView
+			components: {
+				default: Order,
+				menu: Menu
+			}
 		},
 
 		{
