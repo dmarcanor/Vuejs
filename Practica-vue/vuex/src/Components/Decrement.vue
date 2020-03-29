@@ -3,11 +3,10 @@
 </template>
 
 <script>
-import store from '../store'
 export default {
     methods: {
         decrement() {
-            store.commit('decrement')
+            this.$store.commit('decrement')
         }
     }
 }

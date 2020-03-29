@@ -7,7 +7,6 @@
 
 <script>
 import Counter from './Components/Counter'
-import store from './store'
 
 export default {
 	name: 'app',
@@ -16,7 +15,7 @@ export default {
 	},
 	computed: {
 		counter() {
-            return store.state.counter
+            return this.$store.state.counter
         }
 	}
 }

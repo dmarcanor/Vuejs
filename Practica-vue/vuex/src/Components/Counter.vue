@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import store from '../store'
 import Increment from './Increment'
 import Decrement from './Decrement'
 
@@ -18,7 +17,7 @@ export default {
     },
     computed: {
         counter() {
-            return store.state.counter
+            return this.$store.state.counter
         }
     }
 }
