@@ -1,12 +1,13 @@
 <template>
 	<div id="app" class="container">
 		<counter/>
-		<p>{{counter}}</p>
+		<p>{{message}}</p>
   	</div>
 </template>
 
 <script>
 import Counter from './Components/Counter'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
 	name: 'app',
@@ -14,9 +15,13 @@ export default {
 		Counter
 	},
 	computed: {
-		counter() {
-            return this.$store.state.counter
-        }
+		...mapGetters(['tripleCounter']),
+		...mapState({
+			contador: 'counter',
+			message() {
+				return "El contador es: " + this.contador + " y multiplicado por 3 es: " + this.tripleCounter
+			}
+		})
 	}
 }
 </script>

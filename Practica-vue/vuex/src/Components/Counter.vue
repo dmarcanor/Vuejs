@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Contador: {{counter}}</h2>
+        <h2>Contador: {{counter}} y multiplicado por 3 es: {{tripleCounter}}</h2>
         <increment/>
         <decrement/>
     </div>
@@ -9,16 +9,16 @@
 <script>
 import Increment from './Increment'
 import Decrement from './Decrement'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
     components: {
-        'increment': Increment,
+        Increment,
         Decrement
     },
     computed: {
-        counter() {
-            return this.$store.state.counter
-        }
+        ...mapState(['counter']),
+        ...mapGetters(['tripleCounter'])
     }
 }
 </script>

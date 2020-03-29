@@ -3,12 +3,9 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
-    methods: {
-        increment() {
-            this.$store.commit('increment')
-        }
-    }
+    methods: mapMutations(['increment'])
 }
 </script>
 
